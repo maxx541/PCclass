@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五年級資訊課：冒險新篇章</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0f9ff;
+            background-image: radial-gradient(#d1fae5 1.5px, transparent 1.5px);
+            background-size: 50px 50px;
+            overflow-x: hidden;
+        }
+
+        .perspective {
+            perspective: 1500px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3rem;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 6px solid white;
+        }
+
+        .flip-card-front {
+            background: white;
+        }
+
+        .flip-card-back {
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* 超大徽章 */
+        .level-badge {
+            font-size: 1.75rem;
+            padding: 0.75rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+        }
+
+        .main-title {
+            text-shadow: 4px 4px 0px #bfdbfe, 8px 8px 0px rgba(0,0,0,0.05);
+        }
+
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-20px) rotate(2deg) scale(1.05); }
+        }
+
+        .step-path {
+            stroke-dasharray: 20;
+            animation: dash 15s linear infinite;
+        }
+
+        @keyframes dash {
+            to { stroke-dashoffset: -400; }
+        }
+
+        /* 內容文字強化 */
+        .skill-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            line-height: 1.4;
+        }
+        .skill-list li::before {
+            content: '⭐';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-16">
+
+    <div class="max-w-7xl mx-auto relative">
+        <!-- 標題區 -->
+        <header class="text-center mb-24">
+            <h1 class="text-6xl md:text-8xl font-black text-blue-600 mb-10 main-title tracking-tighter">
+                資訊課大冒險
+            </h1>
+            <div class="inline-block bg-yellow-300 px-10 py-5 rounded-3xl shadow-xl border-4 border-yellow-500 transform -rotate-1">
+                <p class="text-2xl md:text-4xl font-black text-yellow-900 leading-tight">
+                    👇 點擊卡片！看看你能學會什麼絕招？
+                </p>
+            </div>
+        </header>
+
+        <!-- 互動地圖區 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+            
+            <!-- Level 1 -->
+            <div class="perspective h-[550px]">
+                <div class="flip-card-inner" onclick="this.classList.toggle('is-flipped')">
+                    <div class="flip-card-front border-b-[12px] border-blue-400">
+                        <span class="level-badge bg-blue-500 text-white">LV 1</span>
+                        <h2 class="text-4xl font-black text-gray-800 mb-6">調查員</h2>
+                        <div class="text-[100px] mb-8 float-animation">📋</div>
+                        <p class="text-3xl font-black text-blue-600">Google 表單</p>
+                    </div>
+                    <div class="flip-card-back bg-blue-500">
+                        <h3 class="text-4xl font-black mb-10 border-b-4 border-white pb-2">冒險絕招</h3>
+                        <ul class="skill-list text-left text-2xl font-black space-y-6">
+                            <li>設計問卷大師</li>
+                            <li>收集數據小能手</li>
+                            <li>數位工具全攻略</li>
+                            <li>網路超好禮節</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2 -->
+            <div class="perspective h-[550px] lg:mt-24">
+                <div class="flip-card-inner" onclick="this.classList.toggle('is-flipped')">
+                    <div class="flip-card-front border-b-[12px] border-green-400">
+                        <span class="level-badge bg-green-500 text-white">LV 2</span>
+                        <h2 class="text-4xl font-black text-gray-800 mb-6">分析師</h2>
+                        <div class="text-[100px] mb-8 float-animation">📊</div>
+                        <p class="text-3xl font-black text-green-600">Google 試算表</p>
+                    </div>
+                    <div class="flip-card-back bg-green-500">
+                        <h3 class="text-4xl font-black mb-10 border-b-4 border-white pb-2">冒險絕招</h3>
+                        <ul class="skill-list text-left text-2xl font-black space-y-6">
+                            <li>自動計算大魔法</li>
+                            <li>彩色圖表製作</li>
+                            <li>數據偵探找真相</li>
+                            <li>資料整理達人</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3 -->
+            <div class="perspective h-[550px] lg:mt-12">
+                <div class="flip-card-inner" onclick="this.classList.toggle('is-flipped')">
+                    <div class="flip-card-front border-b-[12px] border-orange-400">
+                        <span class="level-badge bg-orange-500 text-white">LV 3</span>
+                        <h2 class="text-4xl font-black text-gray-800 mb-6">建築師</h2>
+                        <div class="text-[100px] mb-8 float-animation">🐱</div>
+                        <p class="text-3xl font-black text-orange-600">Scratch 程式</p>
+                    </div>
+                    <div class="flip-card-back bg-orange-500">
+                        <h3 class="text-4xl font-black mb-10 border-b-4 border-white pb-2">冒險絕招</h3>
+                        <ul class="skill-list text-left text-2xl font-black space-y-6">
+                            <li>大腦邏輯迷宮</li>
+                            <li>程式積木大拼圖</li>
+                            <li>自製超酷遊戲</li>
+                            <li>控制電腦聽話</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 4 -->
+            <div class="perspective h-[550px]">
+                <div class="flip-card-inner" onclick="this.classList.toggle('is-flipped')">
+                    <div class="flip-card-front border-b-[12px] border-purple-400">
+                        <span class="level-badge bg-purple-500 text-white">LV 4</span>
+                        <h2 class="text-4xl font-black text-gray-800 mb-6">AI 先鋒</h2>
+                        <div class="text-[100px] mb-8 float-animation">🧠</div>
+                        <p class="text-3xl font-black text-purple-600">AI 大應用</p>
+                    </div>
+                    <div class="flip-card-back bg-purple-500">
+                        <h3 class="text-4xl font-black mb-10 border-b-4 border-white pb-2">冒險絕招</h3>
+                        <ul class="skill-list text-left text-2xl font-black space-y-6">
+                            <li>探索 AI 的頭腦</li>
+                            <li>數位公民小正義</li>
+                            <li>AI 畫畫與寫作</li>
+                            <li>通往未來傳送門</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 每日裝備區 -->
+        <footer class="mt-48 pb-20">
+            <div class="bg-blue-600 p-12 rounded-[4rem] shadow-2xl max-w-4xl mx-auto border-[10px] border-blue-200">
+                <h3 class="text-center font-black text-5xl mb-12 text-white tracking-widest">🎒 每天上課必帶裝備</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="bg-white p-10 rounded-[3rem] flex flex-col items-center shadow-lg transform hover:-rotate-2 transition-transform">
+                        <div class="text-8xl mb-6">🏫</div>
+                        <span class="text-3xl md:text-4xl font-black text-blue-600 text-center leading-tight">Google<br>Classroom</span>
+                    </div>
+                    <div class="bg-white p-10 rounded-[3rem] flex flex-col items-center shadow-lg transform hover:rotate-2 transition-transform">
+                        <div class="text-8xl mb-6">🎮</div>
+                        <span class="text-3xl md:text-4xl font-black text-green-600 text-center leading-tight">Egame<br>打怪練功</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- 背景裝飾 path -->
+        <div class="hidden lg:block absolute top-1/2 left-0 w-full pointer-events-none -z-10">
+             <svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+                <path class="step-path" d="M30,200 C150,350 350,50 500,200 C650,350 850,50 970,200" stroke="#bfdbfe" stroke-width="12" stroke-linecap="round" fill="none" />
+             </svg>
+        </div>
+    </div>
+
+</body>
+</html>
